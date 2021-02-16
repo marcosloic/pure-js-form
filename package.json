@@ -1,0 +1,29 @@
+{
+    "author": "L. Marcos",
+    "bundleDependencies": false,
+    "deprecated": false,
+    "description": "",
+    "devDependencies": {
+        "@types/jest": "^26.0.20",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^26.6.3",
+        "parcel-bundler": "^1.12.4",
+        "postcss": "^8.2.6",
+        "postcss-modules": "^3.2.2",
+        "prettier": "^2.2.1",
+        "ts-jest": "^26.5.1",
+        "typescript": "^4.1.4"
+    },
+    "directories": {
+        "test": "tests"
+    },
+    "license": "ISC",
+    "main": "src/index.ts",
+    "name": "miro-test",
+    "scripts": {
+        "start": "parcel src/index.html",
+        "build": "parcel src/index.html",
+        "test": "jest"
+    },
+    "version": "0.0.1"
+}

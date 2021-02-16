@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+.form {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*
+ * Generic header style
+ */
+.header {
+    width: 100%;
+    height: 68%;
+    border-radius: 8px 8px 0 0;
+    background: #F8F8F7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerContainer {
+    width: 81%;
+    height: 100%;
+    margin: auto;
+}
+
+.headerContainer h1 {
+    font-size: 20px;
+    line-height: 27px;
+    font-style: normal;
+    font-weight: normal;
+    color: #050038;
+    margin-top: 7%;
+    margin-bottom: 6%;
+}
+
+.header b {
+    font-weight: 700;
+}
+
+/*
+ * Email elements and container styles
+ */
+.emailContainer {
+    height: 48%;
+    display: flex;
+    flex-direction: row;
+    background: #FFFFFF;
+    border: 1px solid #C3C2CF;
+    border-radius: 4px;
+}
+
+.emailList {
+    display: flex;
+    justify-content: left;
+    flex-flow: row wrap;
+    overflow-y: scroll;
+    align-content: start;
+}
+
+.genericEmailStyle {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    height: 24px;
+    margin: 5px 2px 0 2px;
+    color: #050038;
+}
+
+.deleteButton {
+    cursor: pointer;
+}
+
+.email {
+    background: rgba(102, 153, 255, 0.2);
+    border-radius: 100px;
+    padding: 1px 10px 1px 10px
+}
+
+.emailInvalid {
+    border-radius: 0;
+    background-color: white;
+    border: none;
+    border-bottom: 1px dashed #D92929;
+    margin-left: 10px;
+}
+
+/*
+ * The "Add new address" style
+ */
+.newAddressInput {
+    color: #C3C2CF;
+    order: 1;
+    border: none;
+    margin-left: 10px;
+}
+
+.newAddressInput:focus {
+    color: #050038;
+    outline: none;
+}
+
+/*
+ * Footer element, that contains buttons
+ */
+.footer {
+    width: 100%;
+    height: 32%;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+}
+
+.buttonContainer {
+    width: 81%;
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    border: none;
+    background: #4262FF;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 400;
+    padding: 8px 16px;
+}
+
+.addButton {
+    margin-left: 0;
+}
+
+.countButton {
+    margin-left: 15px;
+}

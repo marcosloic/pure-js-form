@@ -23,7 +23,14 @@ export const handleEmailKeyboardEvents = (
     const isCommaTrigger =
         type === KEYBOARD_EVENTS.keyup &&
         (evt as KeyboardEvent).key === KEYCODE.comma;
-    const isPasteTrigger = type === PASTE_EVENT;
+
+    const isPasteTriggerInternetExplorer =
+        (evt as any).ctrlKey === true &&
+        (evt as any).key === 'v' &&
+        (window as any).clipboardData;
+
+    const isPasteTrigger =
+        type === PASTE_EVENT || isPasteTriggerInternetExplorer;
 
     // Determine if we should try to add the new email. Is the event one of the triggers we're looking for?
     if (

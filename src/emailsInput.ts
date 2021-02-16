@@ -71,8 +71,6 @@ export const EmailsInput = (entryPoint: HTMLElement) => {
         handleEmailKeyboardEvents(evt, newEmailInput, listViewModel);
     });
     newEmailInput.addEventListener(PASTE_EVENT, (evt: ClipboardEvent) => {
-        alert('Works!');
-        console.log(evt, newEmailInput, listViewModel);
         evt.preventDefault();
         handleEmailKeyboardEvents(evt, newEmailInput, listViewModel);
     });

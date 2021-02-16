@@ -35,6 +35,7 @@ describe('The emailUtils', () => {
                 'just"not"right@example.com',
                 'this is"not\\allowed@example.com',
                 'i_like_underscore@but_its_not_allowed_in_this_part.example.com',
+                'loic,marcos@gmail.com',
             ];
             invalidList.map((email) => {
                 expect(isValidEmail(email)).toBe(false);

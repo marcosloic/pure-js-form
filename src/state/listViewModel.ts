@@ -4,9 +4,13 @@ import {
     AddToDom,
 } from '../utils/htmlManipulationUtils';
 // @ts-ignore
-import styles from '../form.css';
+import styles from '../emailsInput.css';
 import { isValidEmail } from '../utils/emailUtils';
 
+/*
+ * Interface between the DOM and the data
+ * Must be instantiated with a reference to the element to manage
+ */
 export class ListViewModel {
     private listHtmlElem: Element;
     private itemCount = 0;
@@ -15,6 +19,10 @@ export class ListViewModel {
         this.listHtmlElem = list;
     }
 
+    /*
+     * Converts a string into an HTMLElement, with the correct styles
+     * and attaches it to the DOM
+     */
     public add(elem: string) {
         const isEmailValid = isValidEmail(elem);
         if (isEmailValid) {

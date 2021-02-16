@@ -1,5 +1,5 @@
 export const createHtmlElement = (htmlString: string): any => {
-    const dom = document.createElement("div");
+    const dom = document.createElement('div');
     dom.innerHTML = htmlString;
     const elem = dom.children[0];
     return elem;

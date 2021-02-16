@@ -10,6 +10,24 @@ export const onlyContainsCommas = (value: string): boolean => {
     );
 };
 
+export const generateFakeEmail = () => {
+    const strValues = 'abcdefg12345';
+    let strEmail = '';
+    let strTmp;
+    for (let i = 0; i < 7; i++) {
+        strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));
+        strEmail = strEmail + strTmp;
+    }
+    strTmp = '';
+    strEmail = strEmail + '@';
+    for (let j = 0; j < 8; j++) {
+        strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));
+        strEmail = strEmail + strTmp;
+    }
+    strEmail = strEmail + '.com';
+    return strEmail;
+};
+
 /*
  * This uses the native email input to check the email validity.
  * The RFC for what constitutes a valid email address is quite comprehensive

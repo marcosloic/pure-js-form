@@ -23,7 +23,8 @@
     "scripts": {
         "start": "parcel index.html",
         "build:website": "parcel build index.html",
-        "build:bundle": "parcel build src/form.ts",
+        "build:library": "parcel build src/emailsInput.ts",
+        "build:library:umd": "parcel build src/emailsInput.ts --global miro",
         "test": "jest"
     },
     "version": "0.0.1"

@@ -3,9 +3,10 @@ import { createHtmlElement, AddToDom } from './utils/htmlManipulationUtils';
 import { ListViewModel } from './state/listViewModel';
 import { KEYBOARD_EVENTS, PASTE_EVENT } from './constants';
 import { handleEmailKeyboardEvents } from './utils/handleEmailKeyboardEvents';
+import { generateFakeEmail } from './utils/emailUtils';
 
 // @ts-ignore
-import styles from './form.css';
+import styles from './emailsInput.css';
 
 const htmlElement = `
 <div class="${styles.form}">
@@ -28,13 +29,21 @@ const htmlElement = `
 </div>
 `;
 
-export const Form = (entryPoint: HTMLElement) => {
-    const id = renderMain(entryPoint);
+export const EmailsInput = (entryPoint: HTMLElement) => {
+    /*
+     * First render the form to the element passed by the user
+     * and give the form a generated ID
+     */
+    const uniqueId = Math.random().toString();
+    const htmlElem = createHtmlElement(htmlElement);
+    htmlElem.id = uniqueId;
+    AddToDom(entryPoint, htmlElem);
 
-    // Setup anchor for dom manip
-    const mainForm = document.getElementById(id);
+    // Use the unique ID to get the form,
+    // so multiple forms can be added to the DOM
+    const mainForm = document.getElementById(uniqueId);
 
-    // Getters for dom elements
+    // Keep references of the main elements we want to interact with.
     const emailList = mainForm.getElementsByClassName(styles.emailList)[0];
     const addEmailButton = mainForm.getElementsByClassName(styles.addButton)[0];
     const countButton = mainForm.getElementsByClassName(styles.countButton)[0];
@@ -42,37 +51,27 @@ export const Form = (entryPoint: HTMLElement) => {
         styles.newAddressInput
     )[0] as HTMLInputElement;
 
-    // Create list state object
+    // Create the list viewModel
     const listViewModel = new ListViewModel(emailList);
 
+    // Add the eventListeners to the DOM elements we are interested in
     addEmailButton.addEventListener(KEYBOARD_EVENTS.click, () =>
-        listViewModel.add(Math.random().toString())
+        listViewModel.add(generateFakeEmail())
     );
     countButton.addEventListener(KEYBOARD_EVENTS.click, () =>
-        alert(`There are ${listViewModel.getValidEmailCount()} emails`)
+        alert(`There are ${listViewModel.getValidEmailCount()} valid emails`)
     );
-
     newEmailInput.addEventListener(
         KEYBOARD_EVENTS.keyup,
         (evt: KeyboardEvent) => {
             handleEmailKeyboardEvents(evt, newEmailInput, listViewModel);
         }
     );
-
     newEmailInput.addEventListener(KEYBOARD_EVENTS.blur, (evt: FocusEvent) => {
         handleEmailKeyboardEvents(evt, newEmailInput, listViewModel);
     });
-
     newEmailInput.addEventListener(PASTE_EVENT, (evt: ClipboardEvent) => {
         evt.preventDefault();
         handleEmailKeyboardEvents(evt, newEmailInput, listViewModel);
     });
-};
-
-const renderMain = (entryPoint: HTMLElement) => {
-    const uniqueId = Math.random().toString();
-    const htmlElem = createHtmlElement(htmlElement);
-    htmlElem.id = uniqueId;
-    AddToDom(entryPoint, htmlElem);
-    return uniqueId;
 };

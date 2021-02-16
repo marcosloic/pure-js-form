@@ -1,10 +1,10 @@
-import { Form } from './src/form';
+import { EmailsInput } from './src/emailsInput';
 
 const entryPoint = document.getElementById('content');
-Form(entryPoint);
+EmailsInput(entryPoint);
 
 const entryPoint2 = document.getElementById('content2');
-Form(entryPoint2);
+EmailsInput(entryPoint2);
 
 const entryPoint3 = document.getElementById('content3');
-Form(entryPoint3);
+EmailsInput(entryPoint3);

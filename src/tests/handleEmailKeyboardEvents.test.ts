@@ -77,7 +77,7 @@ describe('The handleEmailKeyboardEvents function', () => {
     });
 
     describe('When there is a PASTE event', () => {
-        test('It will add the email if the field is not empty', () => {
+        test('It will add the email if the clipboard is not empty', () => {
             handleEmailKeyboardEvents(
                 {
                     type: PASTE_EVENT,
@@ -107,7 +107,7 @@ describe('The handleEmailKeyboardEvents function', () => {
             expect(stateObject.add).toHaveBeenNthCalledWith(3, 'three');
             expect(stateObject.add).toHaveBeenNthCalledWith(4, 'four');
         });
-        test('It will NOT add the email if the field is empty', () => {
+        test('It will NOT add the email if the clipboard is empty', () => {
             handleEmailKeyboardEvents(
                 {
                     type: PASTE_EVENT,
@@ -119,6 +119,35 @@ describe('The handleEmailKeyboardEvents function', () => {
                 stateObject
             );
             expect(stateObject.add).not.toHaveBeenCalled();
+        });
+        test('It will NOT add the email if the clipboard only contains commas', () => {
+            handleEmailKeyboardEvents(
+                {
+                    type: PASTE_EVENT,
+                    clipboardData: {
+                        getData: () => ',,,,,',
+                    },
+                },
+                {},
+                stateObject
+            );
+            expect(stateObject.add).not.toHaveBeenCalled();
+        });
+        test('It will NOT add the email if the clipboard only contains commas', () => {
+            handleEmailKeyboardEvents(
+                {
+                    type: PASTE_EVENT,
+                    clipboardData: {
+                        getData: () => 'test,test2,test3',
+                    },
+                },
+                {},
+                stateObject
+            );
+            expect(stateObject.add).toHaveBeenCalledTimes(3);
+            expect(stateObject.add).toHaveBeenNthCalledWith(1, 'test');
+            expect(stateObject.add).toHaveBeenNthCalledWith(2, 'test2');
+            expect(stateObject.add).toHaveBeenNthCalledWith(3, 'test3');
         });
     });
 });

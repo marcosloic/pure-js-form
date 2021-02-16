@@ -46,7 +46,7 @@ export const handleEmailKeyboardEvents = (
     // We also expect a list of emails rather than a single value
     if (isPasteTrigger) {
         const pasteContent =
-            (evt as ClipboardEvent).clipboardData.getData('Text') ||
+            (evt as ClipboardEvent).clipboardData?.getData('Text') ||
             ((window as any).clipboardData?.getData('Text') as string);
 
         if (!pasteContent || pasteContent.length === 0) {

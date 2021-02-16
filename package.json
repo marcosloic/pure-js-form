@@ -1,7 +1,6 @@
 {
     "author": "L. Marcos",
     "bundleDependencies": false,
-    "deprecated": false,
     "description": "",
     "devDependencies": {
         "@types/jest": "^26.0.20",

@@ -23,7 +23,14 @@ export const handleEmailKeyboardEvents = (
     const isCommaTrigger =
         type === KEYBOARD_EVENTS.keyup &&
         (evt as KeyboardEvent).key === KEYCODE.comma;
-    const isPasteTrigger = type === PASTE_EVENT;
+
+    const isPasteTriggerInternetExplorer =
+        (evt as any).ctrlKey === true &&
+        (evt as any).key === 'v' &&
+        (window as any).clipboardData;
+
+    const isPasteTrigger =
+        type === PASTE_EVENT || isPasteTriggerInternetExplorer;
 
     // Determine if we should try to add the new email. Is the event one of the triggers we're looking for?
     if (
@@ -39,7 +46,7 @@ export const handleEmailKeyboardEvents = (
     // We also expect a list of emails rather than a single value
     if (isPasteTrigger) {
         const pasteContent =
-            (evt as ClipboardEvent).clipboardData.getData('Text') ||
+            (evt as ClipboardEvent).clipboardData?.getData('Text') ||
             ((window as any).clipboardData?.getData('Text') as string);
 
         if (!pasteContent || pasteContent.length === 0) {

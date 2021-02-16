@@ -1,4 +1,4 @@
-import { Form } from './form';
+import { Form } from './src/form';
 
 const entryPoint = document.getElementById('content');
 Form(entryPoint);

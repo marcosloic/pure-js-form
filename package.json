@@ -21,8 +21,9 @@
     "main": "src/index.ts",
     "name": "miro-test",
     "scripts": {
-        "start": "parcel src/index.html",
-        "build": "parcel src/index.html",
+        "start": "parcel index.html",
+        "build:website": "parcel build index.html",
+        "build:bundle": "parcel build src/form.ts",
         "test": "jest"
     },
     "version": "0.0.1"

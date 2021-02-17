@@ -32,9 +32,9 @@ export class ListViewModel {
         const emailClass = isEmailValid ? styles.email : styles.emailInvalid;
         const newElem: HTMLInputElement = createHtmlElement(
             `
-        <div class="${styles.genericEmailStyle} ${emailClass}">
-            <span>${elem}</span>
-            <span class="${styles.deleteButton}">x</span>
+        <div class="${styles.genericEmailStyle} ${styles.validatedEmailContainer} ${emailClass}">
+            <span class="${styles.validatedEmailName}">${elem}</span>
+            <span class="${styles.validatedEmailButton}">x</span>
         </div>
         `
         );

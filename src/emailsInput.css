@@ -75,7 +75,18 @@
     color: #050038;
 }
 
-.deleteButton {
+.validatedEmailContainer {
+    display: flex;
+}
+.validatedEmailName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 2px;
+    margin-right: 5px;
+}
+
+.validatedEmailButton {
     cursor: pointer;
 }
 
